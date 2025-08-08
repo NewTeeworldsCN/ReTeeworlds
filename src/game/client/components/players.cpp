@@ -183,7 +183,7 @@ void CPlayers::RenderPlayer(
 	}
 
 	// do skidding
-	if(!InAir && WantOtherDir && length(Vel*50) > 500.0f)
+	if(!InAir && WantOtherDir && length(Vel*20) > 500.0f)
 	{
 		static int64 s_SkidSoundTime = 0;
 		if(time_get() - s_SkidSoundTime > time_freq()/10)
@@ -194,7 +194,7 @@ void CPlayers::RenderPlayer(
 
 		m_pClient->m_pEffects->SkidTrail(
 			Position+vec2(-Player.m_Direction*6,12),
-			vec2(-Player.m_Direction*100*length(Vel),-50)
+			vec2(-Player.m_Direction*100*length(Vel),-20)
 		);
 	}
 

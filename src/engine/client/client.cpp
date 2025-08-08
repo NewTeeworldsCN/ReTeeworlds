@@ -180,13 +180,13 @@ void CSmoothTime::Update(CGraph *pGraph, int64 Target, int TimeLeft, int AdjustD
 	if(TimeLeft < 0)
 	{
 		int IsSpike = 0;
-		if(TimeLeft < -50)
+		if(TimeLeft < -SERVER_TICK_SPEED)
 		{
 			IsSpike = 1;
 
 			m_SpikeCounter += 5;
-			if(m_SpikeCounter > 50)
-				m_SpikeCounter = 50;
+			if(m_SpikeCounter > SERVER_TICK_SPEED)
+				m_SpikeCounter = SERVER_TICK_SPEED;
 		}
 
 		if(IsSpike && m_SpikeCounter < 15)

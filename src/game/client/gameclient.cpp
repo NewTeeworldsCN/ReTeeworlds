@@ -1042,8 +1042,7 @@ void CGameClient::OnNewSnapshot()
 						m_aClients[Item.m_ID].m_Evolved = m_Snap.m_aCharacters[Item.m_ID].m_Cur;
 					}
 
-					if(Item.m_ID != m_LocalClientID || Client()->State() == IClient::STATE_DEMOPLAYBACK)
-						ProcessTriggeredEvents(pCharInfo->m_Cur.m_TriggeredEvents, vec2(pCharInfo->m_Cur.m_X, pCharInfo->m_Cur.m_Y));
+					ProcessTriggeredEvents(pCharInfo->m_Cur.m_TriggeredEvents, vec2(pCharInfo->m_Cur.m_X, pCharInfo->m_Cur.m_Y));
 				}
 			}
 			else if(Item.m_Type == NETOBJTYPE_SPECTATORINFO)
@@ -1322,7 +1321,7 @@ void CGameClient::OnPredict()
 			World.m_apCharacters[c]->Move();
 			World.m_apCharacters[c]->Quantize();
 		}
-
+		/*
 		// check if we want to trigger effects
 		if(Tick > m_LastNewPredictedTick)
 		{
@@ -1342,6 +1341,7 @@ void CGameClient::OnPredict()
 				);
 			}
 		}
+		*/
 	}
 
 	m_PredictedTick = Client()->PredGameTick();

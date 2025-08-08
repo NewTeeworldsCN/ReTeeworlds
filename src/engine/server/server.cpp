@@ -897,7 +897,7 @@ void CServer::ProcessClientPacket(CNetChunk *pPacket)
 			for(int i = 0; i < Size/4; i++)
 				pInput->m_aData[i] = Unpacker.GetInt();
 
-			int PingCorrection = clamp(Unpacker.GetInt(), 0, 50);
+			int PingCorrection = clamp(Unpacker.GetInt(), 0, 20);
 			if(m_aClients[ClientID].m_Snapshots.Get(m_aClients[ClientID].m_LastAckedSnapshot, &TagTime, 0, 0) >= 0)
 			{
 				m_aClients[ClientID].m_Latency = (int)(((Now-TagTime)*1000)/time_freq());
